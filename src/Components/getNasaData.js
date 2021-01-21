@@ -8,7 +8,9 @@ import axios from 'axios';
 import {BASE_URL, API_KEY} from '../Constants/Index'
 
 /*<-----import styled and keyframe for animation from styled-components---->*/
-import styled, { keyframes } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
+
+
 
 
 
@@ -59,7 +61,7 @@ const Rotate = styled.img`
 
 const Title = styled.h1`
     color: ${(pr) => pr.theme.primaryColor}
-    font-family: 'Tangerine', serif;
+    //font-family: 'Tangerine', serif;
 `
 
 export default GetPictureData;
