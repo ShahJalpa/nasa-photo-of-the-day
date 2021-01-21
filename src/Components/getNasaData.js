@@ -7,6 +7,11 @@ import axios from 'axios';
 /*<<---- import keys and url from Constants/Index ---->>*/
 import {BASE_URL, API_KEY} from '../Constants/Index'
 
+/*<-----import styled and keyframe for animation from styled-components---->*/
+import styled, { keyframes } from 'styled-components';
+
+
+
 function GetPictureData (){
     const [picture, setPicture] = useState([]); //using a state hook to initialize the picture of empty array 
 
@@ -23,16 +28,38 @@ function GetPictureData (){
     }, []) 
 
     return(
-        <div>
-            <h1>{picture.title}</h1>
+        <DivStyled>
+            <Title>{picture.title}</Title>
             <p>{picture.date}</p>
-            <img style={{width: 390, height: 487}} 
+            <Rotate /*style={{width: 390, height: 487}} */
                  src={picture.url} 
                  alt={picture.title}>
-            </img>
+            </Rotate>
             <p>{picture.explanation}</p>
-        </div>
+        </DivStyled>
     )
 }
+const DivStyled = styled.div `
+    background-color: lightyellow;
+
+`
+const rotate = keyframes`
+    from{
+        transfrom: rotate(0deg);
+    }
+    to{
+        transform: rorate(360deg);
+    }
+`;
+const Rotate = styled.img`
+    //animation: ${rotate} 5s linear;
+    width: 390;
+    height: 487
+`;
+
+const Title = styled.h1`
+    color: ${(pr) => pr.theme.primaryColor}
+    font-family: 'Tangerine', serif;
+`
 
 export default GetPictureData;
